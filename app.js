@@ -1,10 +1,14 @@
 const express= require('express');
 const app=express();
 const { Navigator } = require("node-navigator");
+const cors=require('cors')
 const navigator = new Navigator();
 const PORT= process.env.PORT || 8000;
+app.use(cors({ origin: true, credentials: true }));
+let location;
 const successCallback = (geolocation) => {
     console.log(geolocation);
+    location=geolocation;
   };
   
   const errorCallback = (error) => {
@@ -29,11 +33,13 @@ const successCallback = (geolocation) => {
         console.log("Browser does not support the Geolocation API");
       }
  }
-    
-  getLocation();
+   
+  
  
 app.get("/",(req,res)=>{
-    res.send("Geolocation testing");
+  getLocation();
+    console.log(location);
+    res.send(location);
 
 })
 app.listen(PORT,()=>{
