@@ -2,7 +2,7 @@ const express= require('express');
 const app=express();
 const { Navigator } = require("node-navigator");
 const navigator = new Navigator();
-
+const PORT= process.env.PORT || 8000;
 const successCallback = (geolocation) => {
     console.log(geolocation);
   };
@@ -36,6 +36,6 @@ app.get("/",(req,res)=>{
     res.send("Geolocation testing");
 
 })
-app.listen(8000,()=>{
+app.listen(PORT,()=>{
     console.log("server is running");
 })
