@@ -7,7 +7,7 @@ const PORT= process.env.PORT || 8000;
 app.use(cors({ origin: true, credentials: true }));
 let location;
 const successCallback = (geolocation) => {
-    
+ 
     location=geolocation;
   };
   
