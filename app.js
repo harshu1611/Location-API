@@ -38,7 +38,6 @@ const successCallback = (geolocation) => {
  
 app.get("/",(req,res)=>{
   getLocation();
-    console.log(location);
     res.send(location);
 
 })
